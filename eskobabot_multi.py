@@ -250,6 +250,7 @@ def elkartuKartak(kartak,colsmax=3):
     # zerrenda bezala pasatako irudiak batean elkartzen ditu eta irudi berria itzultzen du
     
     n = len(kartak)
+    margin = 5  # bi karten arteko margina
     
     if n != 0:
         if n < colsmax:
@@ -266,13 +267,13 @@ def elkartuKartak(kartak,colsmax=3):
             
         images = [Image.open(file) for file in kartak]
         img_w, img_h = images[0].size
-        mergedImages = Image.new('RGBA',(colsmax*img_w, rows*img_h), (16, 60, 46, 255))
+        mergedImages = Image.new('RGBA',(colsmax*(img_w+margina)+margina, rows*(img_h+margina)+margina), (16, 60, 46, 255))
         bg_w, bg_h = mergedImages.size
         
         for i in range(rows):
             for j in range(colsmax):
                 if i*colsmax+j < n:
-                    offset = (j*img_w, i*img_h)
+                    offset = (j*(img_w+margina)+margina), i*(img_h+margina)+margina)
                     mergedImages.paste(images[i*colsmax+j], offset)
         
         return mergedImages
