@@ -122,7 +122,6 @@ def eskoba(message):
     bot.send_message(txat_id, testuak["agurra"][jokoan[txat_id]["hizkuntza"]].format(message.from_user.first_name))
     
     print(f"{message.from_user.first_name} jolasten hasi da.")
-    print(jokoan)
     
     bot.send_message(txat_id, testuak["eskuandago"][jokoan[txat_id]["hizkuntza"]], disable_notification=(True))
     kartakbidali(jokoan[txat_id]["nire_eskua"], txat_id)
